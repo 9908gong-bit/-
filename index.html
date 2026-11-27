@@ -30,9 +30,9 @@ button.on{background:var(--ac);border-color:var(--ac);color:#fff;font-weight:600
 @media(prefers-reduced-motion:reduce){.c.fl{animation:none;background:#ff5252}}
 #log{background:var(--card);border:1px solid var(--ln);border-radius:8px;padding:8px 10px;font-size:13px;min-height:110px}
 #log div:last-child{font-weight:700}
-#pm,#bt,#cn,#rs,#gm,#lb,#ag,#av{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:9}
-#pm[hidden],#bt[hidden],#cn[hidden],#rs[hidden],#gm[hidden],#lb[hidden],#ag[hidden],#av[hidden]{display:none}
-#pm>div,#cn>div,#rs>div,#gm>div,#lb>div,#ag>div,#av>div{background:var(--card);padding:16px;border-radius:12px;text-align:center}
+#pm,#bt,#cn,#rs,#gm,#lb,#ag,#av,#ad{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:9}
+#pm[hidden],#bt[hidden],#cn[hidden],#rs[hidden],#gm[hidden],#lb[hidden],#ag[hidden],#av[hidden],#ad[hidden]{display:none}
+#pm>div,#cn>div,#rs>div,#gm>div,#lb>div,#ag>div,#av>div,#ad>div{background:var(--card);padding:16px;border-radius:12px;text-align:center}
 #pm .row,#rs .row{justify-content:center;margin-top:10px}
 #stg{position:relative;width:min(92vw,440px);height:270px;border-radius:12px;overflow:hidden;background:linear-gradient(#86a8bd 0 68%,#6b5a43 68%);box-shadow:0 8px 30px #000a}
 .fg{position:absolute;bottom:22%;width:96px;text-align:center;color:#fff;font-size:12px;font-weight:600;text-shadow:0 1px 3px #000}
@@ -49,7 +49,7 @@ button.on{background:var(--ac);border-color:var(--ac);color:#fff;font-weight:600
 #cr{font-size:20px;font-weight:800;min-height:28px;margin-top:8px}
 #rt{font-size:30px;font-weight:800;margin:4px 0}
 #rr{margin-bottom:6px}
-#gm>div{max-height:86vh;overflow:auto;width:min(94vw,460px);text-align:left}
+#gm>div,#ad>div{max-height:86vh;overflow:auto;width:min(94vw,460px);text-align:left}
 .gh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
 .gc{display:flex;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--ln)}
 .gp{flex:none;width:96px;height:96px;background:#86a8bd;border-radius:8px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;overflow:hidden}
@@ -60,6 +60,7 @@ button.on{background:var(--ac);border-color:var(--ac);color:#fff;font-weight:600
 #bd.nm .hp{display:none}
 #ag>div,#av>div{width:min(94vw,400px);max-height:90vh;overflow:auto}
 #ac2 button{font-size:13px;padding:4px 9px}
+.em{text-align:center;line-height:1.2;margin:4px 0}.ge{flex:none;width:52px;text-align:center}
 .ac{border:2px solid var(--ln);border-radius:12px;padding:8px 10px;margin:8px 0;background:var(--bg);cursor:pointer}
 .ac.no{opacity:.6;cursor:default}
 .an{font-weight:800;font-size:17px}.ac svg{display:block;margin:4px auto}.at{font-size:13px;text-align:left}
@@ -70,7 +71,7 @@ button.on{background:var(--ac);border-color:var(--ac);color:#fff;font-weight:600
 <div class="row" id="menu">
 <button data-m="">2인 대전</button><button data-m="easy">AI 이지</button><button data-m="normal">AI 노말</button><button data-m="hard">AI 하드</button><button data-m="impossible">AI 불가능</button><button data-m="online">온라인 대전</button>
 </div>
-<div class="row" id="cl" style="margin-top:6px;align-items:center"><span id="cc" class="row" style="align-items:center"><span>내 색</span><button data-c="w">백</button><button data-c="b">흑</button></span><button id="nmb">일반 체스 룰</button><button id="agb">증강 모드</button><button id="gd">기물 설명서</button></div>
+<div class="row" id="cl" style="margin-top:6px;align-items:center"><span id="cc" class="row" style="align-items:center"><span>내 색</span><button data-c="w">백</button><button data-c="b">흑</button></span><button id="nmb">일반 체스 룰</button><button id="agb">증강 모드</button><button id="gd">기물 설명서</button><button id="agd">증강 설명서</button></div>
 <div class="row" style="margin-top:6px"><button id="go" class="on">시작</button></div>
 <div id="st"></div><div id="tm"></div><div id="ac2" class="row" style="margin:4px 0"></div>
 <div id="bd"></div>
@@ -81,6 +82,7 @@ button.on{background:var(--ac);border-color:var(--ac);color:#fff;font-weight:600
 <div id='gm' hidden><div><div class='gh'><b>기물 설명서</b><button id='gx'>닫기</button></div><div id='gl'></div><p class='gn'>치명타는 명중했을 때 공격력의 2배예요 · 공격받고 살아남으면 반격해요 · HP는 저절로 회복되지 않아요.</p></div></div>
 <div id='ag' hidden><div><div class='gh'><b id='agt'></b></div><div id='ags'></div><div id='agl'></div></div></div>
 <div id='av' hidden><div><div class='gh'><b>이번 판 증강</b><button id='avx'>닫기</button></div><div id='avl'></div></div></div>
+<div id='ad' hidden><div><div class='gh'><b>증강 설명서 (45종)</b><button id='adx'>닫기</button></div><div id='adl'></div></div></div>
 <div id='cn' hidden><div><div id='coin'>?</div><div id='cr'></div></div></div>
 <div id='rs' hidden><div><div id='rt'></div><div id='rr'></div><div class='row'><button id='again'>한 판 더</button><button id='see'>보드 보기</button></div></div></div>
 <div id='bt' hidden><div id='stg'><div id='bn'></div><div class='fg' id='fw' style='left:7%'></div><div class='fg' id='fb' style='right:7%'></div><div id='fx'></div></div></div>
@@ -119,7 +121,8 @@ R:{n:"룩",g:"♜",hp:200,a:50,h:.9,d:.03,c:.15,v:5},
 Q:{n:"퀸",g:"♛",hp:150,a:45,h:.9,d:.14,c:.25,v:9},
 K:{n:"킹",g:"♚",hp:200,a:55,h:.95,d:.1,c:.2,v:20}};
 const D={N:[[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]],B:[[1,1],[1,-1],[-1,1],[-1,-1]],R:[[1,0],[-1,0],[0,1],[0,-1]]};
-D.Q=D.B.concat(D.R);D.K=D.Q;D.U=[[3,2],[2,3],[-3,2],[-2,3],[3,-2],[2,-3],[-3,-2],[-2,-3]];
+D.Q=D.B.concat(D.R);D.K=D.Q;D.U=[[3,2],[2,3],[-3,2],[-2,3],[3,-2],[2,-3],[-3,-2],[-2,-3]];D.T=[];for(let a=-2;a<3;a++)for(let b=-2;b<3;b++)if(a||b)D.T.push([a,b]);
+const dk=p=>{const g=G.aug&&G.aug[p.c];return p.t=='N'&&g==1?'U':p.t=='K'&&g==11?'N':p.t=='K'&&g==36?'T':p.t};
 const mk=(t,c)=>({t,c,hp:ST[t].hp,m:0}),nm=p=>(p.c=="w"?"백 ":"흑 ")+ST[p.t].n;
 const LV={"":"2인 대전",easy:"AI 이지",normal:"AI 노말",hard:"AI 하드",impossible:"AI 불가능"};
 let G=null;
@@ -131,18 +134,20 @@ function initBoard(){const b=Array(64).fill(null),k="RNBQKBNR";
 function moves(b,i){const p=b[i],r=i>>3,c=i&7,o=[];
  if(p.t=="P"){const dr=p.c=="w"?-1:1,r1=r+dr;
   if(r1<0||r1>7)return o;
-  if(!b[r1*8+c]){o.push({to:r1*8+c});if(!p.m&&!b[(r+2*dr)*8+c])o.push({to:(r+2*dr)*8+c})}
+  if(!b[r1*8+c]){o.push({to:r1*8+c});if(G.aug&&G.aug[p.c]==15){for(let k=2;k<4;k++){const rk=r+k*dr;if(rk<0||rk>7||b[rk*8+c])break;o.push({to:rk*8+c})}}else if(!p.m&&!b[(r+2*dr)*8+c])o.push({to:(r+2*dr)*8+c})}
   for(const dc of[-1,1]){const cc=c+dc;if(cc<0||cc>7)continue;const t=b[r1*8+cc];if(t&&t.c!=p.c)o.push({to:r1*8+cc,cap:1})}
   return o}
  const sl="BRQ".includes(p.t);
- for(const[dr,dc]of D[p.t=='N'&&G.aug&&G.aug[p.c]==1?'U':p.t]){let rr=r+dr,cc=c+dc;
+ for(const[dr,dc]of D[dk(p)]){let rr=r+dr,cc=c+dc;
   while(rr>=0&&rr<8&&cc>=0&&cc<8){const t=b[rr*8+cc];
    if(t){if(t.c!=p.c)o.push({to:rr*8+cc,cap:1});break}
    o.push({to:rr*8+cc});if(!sl)break;rr+=dr;cc+=dc}}
  return o}
 
-function roll(a,d){const A=SX(a),B=SX(d),cr=rnd()<A.c&&!(G.aug&&G.aug[d.c]==2&&d.t=='R'),hit=rnd()<A.h,dg=hit&&rnd()<B.d;let dmg=0,h0=d.hp,rv='';
- if(hit&&!dg){dmg=A.a*(cr?2:1);d.hp-=dmg;if(d.hp<=0&&revive(d))rv=' — 되살아난 망령! 킹 부활(HP 50)'}
+function roll(a,d){const A=SX(a),B=SX(d),cr=rnd()<A.c&&!(G.aug&&G.aug[d.c]==2&&d.t=='R'),hit=rnd()<A.h,dg=hit&&rnd()<B.d&&!(G.aug&&G.aug[a.c]==31);let dmg=0,h0=d.hp,rv='';
+ if(hit&&!dg){dmg=A.a*(cr?2:1);d.hp-=dmg;
+  if(a.t=='B'&&G.aug&&G.aug[a.c]==43&&d.hp>0&&d.hp<=SX(d).hp*.25){d.hp=0;rv=' — 처형!'}
+  if(d.hp<=0){if(revive(d))rv=' — 되살아난 망령! 킹 부활(HP 50)';else if(saves(d))rv=' — 억지부리기! 부활'}}
  return{cr,hit,dg,dmg,hp0:h0,txt:nm(a)+' → '+nm(d)+': '+(!hit?'빗나감':dg?(cr?'치명타 공격을 ':'공격을 ')+'회피!':(cr?'치명타! ':'명중 ')+'-'+dmg)+rv}}
 
 const log=s=>{G.log.push(s.txt||s)};
@@ -161,7 +166,7 @@ async function act(f,t){if(G.nm)return actN(f,t);const g=G;g.busy=1;g.sel=null;c
  if(p===a&&a.t=="P"&&(t>>3)==(a.c=="w"?0:7)){await promote(t);if(g!==G)return}
  end()}
 
-function promote(i){const p=G.b[i],set=t=>{p.t=t;p.hp=SX(p).hp;log(nm(p)+" 승격!")};
+function promote(i){const p=G.b[i],set=t=>{p.t=t;delete p.ab;p.hp=SX(p).hp;log(nm(p)+" 승격!")};
  if(G.fpr){set(G.fpr);return}
  if(G.aug&&G.aug[p.c]==3){const t='NRQB'[Math.random()*4|0];G.rpr=t;set(t);return}
  if(G.ai&&p.c==G.ac){set("Q");return}
@@ -169,7 +174,8 @@ function promote(i){const p=G.b[i],set=t=>{p.t=t;p.hp=SX(p).hp;log(nm(p)+" 승�
 
 function fin(w,msg){G.over=1;G.busy=0;const t=w?(w=='w'?'백':'흑')+' 승리!':'무승부';G.res=t;G.rw=w;G.rm=msg;if(G.on)LS.set(null);log(msg+' — '+t);$('#rt').textContent=t;$('#rr').textContent=msg;$('#rs').hidden=false;render()}
 
-function end(){const b=G.b,ps=b.filter(Boolean),kw=ps.some(p=>p.t=="K"&&p.c=="w"),kb=ps.some(p=>p.t=="K"&&p.c=="b");
+function end(){const b=G.b;G.tn=G.tn||{w:0,b:0};G.tn[G.t]++;if(G.aug&&G.aug[G.t]==35&&G.tn[G.t]==4){const k=b.findIndex(p=>p&&p.t=='K'&&p.c==G.t);if(k>=0){log(nm(b[k])+' — 죽음! 킹이 사라졌다');b[k]=null}}
+ const ps=b.filter(Boolean),kw=ps.some(p=>p.t=="K"&&p.c=="w"),kb=ps.some(p=>p.t=="K"&&p.c=="b");
  if(!kw||!kb)return fin(kw?"w":"b","킹이 쓰러졌다");
  if(ps.length==2)return fin(0,"양쪽 킹만 남아 무승부");
  const nx=G.t=="w"?"b":"w";
@@ -313,7 +319,7 @@ async function startGame(){if(G&&G.unsub){G.unsub();G.unsub=null}$('#pm').hidden
  if(!cfg.nm){await coin(first);if(g!==G)return}
  G.coin=0;G.t=first;G.tt=G.nm?99999:120;G.busy=cfg.aug&&!cfg.nm?1:0;
  log((cfg.nm?'일반 체스 · ':'동전 결과: ')+(first=='w'?'백':'흑')+' 선공 ('+LV[cfg.lv]+(cfg.lv?' — 나는 '+(cfg.me=='w'?'백':'흑'):'')+')');
- render();if(G.busy)draftStart(first,pick3(),[Math.random(),Math.random()]);else cpu()}
+ render();if(G.busy)draftStart(first,pick6(),[Math.random(),Math.random()]);else cpu()}
 
 /* 증강 */
 const AUGS=[
@@ -326,50 +332,96 @@ const AUGS=[
 {n:'안전!!',t:'내 기물이 적을 처치해도 이동하지 않고 원래 자리에 남아요.',s:`<path d='M32 5L53 13V32C53 46 43 56 32 60C21 56 11 46 11 32V13z' fill='#43a047' stroke='#1b5e20' stroke-width='3'/><path d='M21 32L29 40L44 23' fill='none' stroke='#fff' stroke-width='5' stroke-linecap='round'/>`},
 {n:'도박',t:'시작할 때 50%: 내 폰이 모두 퀸으로 / 50%: 내 폰이 모두 사라져요.',s:`<rect x='8' y='14' width='34' height='34' rx='7' fill='#fff' stroke='#333' stroke-width='3'/><circle cx='18' cy='24' r='3'/><circle cx='25' cy='31' r='3'/><circle cx='32' cy='38' r='3'/><rect x='30' y='28' width='26' height='26' rx='6' fill='#e53935' stroke='#333' stroke-width='3'/><circle cx='38' cy='36' r='2.6' fill='#fff'/><circle cx='48' cy='46' r='2.6' fill='#fff'/>`},
 {n:'뇌물',t:'내 비숍이 적을 처치하면 그 기물이 내 편이 돼요(체력 30). 비숍은 제자리에 남아요.',s:`<circle cx='32' cy='32' r='24' fill='#ffd43b' stroke='#b8860b' stroke-width='4'/><text x='32' y='42' font-size='28' text-anchor='middle' font-weight='800' fill='#8d6e00'>₩</text>`},
-{n:'훈련받은 병사',t:'내 모든 폰의 명중률이 20%p 올라요 (70%→90%). 다른 기물은 그대로예요.',s:`<circle cx='32' cy='32' r='26' fill='#fff' stroke='#c62828' stroke-width='4'/><circle cx='32' cy='32' r='16' fill='#e53935'/><circle cx='32' cy='32' r='7' fill='#fff'/><path d='M32 32L58 6' stroke='#5d4037' stroke-width='3'/><path d='M58 6l-10 2 8 8z' fill='#5d4037'/>`}];
+{n:'훈련받은 병사',t:'내 모든 폰의 명중률이 20%p 올라요 (70%→90%). 다른 기물은 그대로예요.',s:`<circle cx='32' cy='32' r='26' fill='#fff' stroke='#c62828' stroke-width='4'/><circle cx='32' cy='32' r='16' fill='#e53935'/><circle cx='32' cy='32' r='7' fill='#fff'/><path d='M32 32L58 6' stroke='#5d4037' stroke-width='3'/><path d='M58 6l-10 2 8 8z' fill='#5d4037'/>`},
+{n:'몽골족',t:'킹을 뺀 모든 아군 기물이 나이트로 변해요. 킹도 나이트처럼 이동·공격해요.',e:'🐎'},
+{n:'여왕의 시대',t:'패배 조건이 킹 사망에서 퀸 사망으로 바뀌어요. 양쪽이 동시에 가질 수 없어요.',e:'👑',ok:false},
+{n:'쫄따구 파티',t:'킹을 뺀 모든 아군 기물이 폰으로 변해요.',e:'🪖'},
+{n:'쓰레기 = 돈',t:'아군 기물이 제거되면 그 자리 3×3 빈칸에 가능한 만큼 아군 폰이 생겨요.',e:'♻️',ok:false},
+{n:'쑥쑥',t:'아군 폰이 이동할 때마다 최대 3칸까지 갈 수 있어요.',e:'🌱'},
+{n:'돈이 최고야!!',t:'시작할 때 내 폰이 전부 상대 폰이 되고, 상대가 직접 조종해요.',e:'💸',ok:false},
+{n:'오만',t:'시작할 때 킹과 퀸만 남고 나머지는 전부 사라져요. 보너스는 없어요.',e:'🦚'},
+{n:'스파이',t:'시작할 때 상대 기물 하나(킹·퀸 제외)가 무작위로 내 편이 돼요.',e:'🕵️',ok:false},
+{n:'청부업자',t:'시작할 때 내 폰 하나가 특수 기물이 돼요. HP100·공격100·명중90%·회피30%·치명40%, 킹처럼 이동.',e:'🗡️',ok:false},
+{n:'도둑',t:'아군 폰이 적을 처치하면 그 기물로 변해요. 능력치는 새 기물, HP는 폰의 HP 그대로예요.',e:'🦝'},
+{n:'길동무',t:'아군 킹이 죽으면 킹 중심 5×5의 모든 기물이 사라져요. 상대 킹도 사라지면 무승부예요.',e:'💀',ok:false},
+{n:'파멸',t:'시작할 때 빈칸 중 무작위 3칸이 사라져 기물을 놓을 수 없어요.',e:'🕳️',ok:false},
+{n:'치터',t:'내 대신 AI(하드 고정)가 직접 플레이해요.',e:'🤖',ok:false},
+{n:'억지부리기',t:'아군 기물이 죽을 때 5% 확률로 그 자리에서 HP 100%로 부활해요.',e:'😡'},
+{n:'바둑',t:'아군 폰이 적 기물의 상하좌우를 모두 막으면 그 기물의 HP가 즉시 0이 돼요.',e:'⚫',ok:false},
+{n:'차',t:'시작할 때 킹 포함 모든 아군 기물이 룩이 돼요. 룩이 5개 이하가 되면 패배해요(최소 6개 유지).',e:'🏰',ok:false},
+{n:'강탈',t:'아군 폰이 적을 처치할 때마다 그 기물의 공격력을 누적해서 더해요. 승격하면 초기화돼요.',e:'🧲'},
+{n:'복제',t:'아군 기물이 죽을 때 1% 확률로 그 자리 가로 3칸에 복제본(HP100%)이 생겨요.',e:'🧬',ok:false},
+{n:'니껀내거 내껀내거',t:'시작할 때 상대 기물(킹 제외) 5개를 제거하고, 내 폰 5개를 그 기물들로 바꿔요.',e:'🎯',ok:false},
+{n:'만나자마자',t:'이동 안 한 아군 폰은 첫 이동에 룩처럼 원하는 만큼 전진해요. 적과 부딪치면 즉시 전투, 못 잡으면 그 앞 칸에 멈춰요.',e:'💨',ok:false},
+{n:'에임핵',t:'내 모든 기물의 명중률이 100%가 되고 상대의 회피를 무시해요.',e:'🎯'},
+{n:'부부',t:'게임당 한 번, 원래 킹/퀸이 죽으면 HP100%로 부활하고 다른 하나는 즉시 죽어요.',e:'💍',ok:false},
+{n:'봉인된 자',t:'내 턴 10번마다 힘 1개를 얻고, 5개를 모으면 즉시 승리해요.',e:'🔒',ok:false},
+{n:'카드',t:'매 턴 1~5·밴 중 무작위 한 장(각 1/6). 숫자만큼 행동하고, 밴이면 턴을 넘겨요.',e:'🃏',ok:false},
+{n:'죽음',t:'내 4번째 턴이 끝나면 내 킹이 즉시 제거돼요.',e:'☠️'},
+{n:'킹타워',t:'킹의 이동·공격 범위가 5×5(주변 24칸)로 넓어져요.',e:'🏯'},
+{n:'연결',t:'아군 기물이 죽을 때 5×5 안의 가장 HP 높은 아군이 현재 HP의 절반을 넘겨 부활시켜요.',e:'🔗',ok:false},
+{n:'유령',t:'아군 기물이 제거된 자리에 유령이 남아 벽이 돼요. 누구도 그 칸에 못 가요.',e:'👻',ok:false},
+{n:'어둠 섬광',t:'내 기물이 이동할 때마다 상대 화면이 3초간 검게 변해요.',e:'🌑',ok:false},
+{n:'분신술',t:'처음 움직인 기물이 갈 수 있던 모든 칸에 분신이 생겨요. 분신은 다음 내 턴에 사라져요.',e:'👥',ok:false},
+{n:'은신비숍',t:'아군 비숍이 이동하면 다음 내 턴까지 상대에게 보이지 않아요.',e:'🌫️',ok:false},
+{n:'대 확장',t:'체스판이 8×8에서 12×12로 커져요.',e:'🗺️',ok:false},
+{n:'처형',t:'내 비숍의 공격이 성공했을 때 대상 HP가 최대의 25% 이하면 즉시 제거해요.',e:'🪓'},
+{n:'승리만이 전부다!!',t:'시작할 때 한 종류를 골라 킹 외 모든 아군 기물을 그 종류로 바꿔요.',e:'🏆',ok:false},
+{n:'체크메이트의 거신병',t:'시작할 때 폰을 전부 없애고 거신병 1개를 줘요. HP500·공격80·명중75%·회피2%·치명30%, 퀸처럼 이동.',e:'🗿',ok:false}];
 const SX=p=>{const b=ST[p.t],g=G.aug&&G.aug[p.c];if(!g)return b;
+ if(g==27&&p.ab)return{...b,a:b.a+p.ab};
+ if(g==31)return{...b,h:1};
  if(g==2&&p.t=='R')return{...b,a:30,hp:300};
  if(g==5)return{...b,d:b.d+.1};
  if(g==10&&p.t=='P')return{...b,h:Math.min(1,b.h+.2)};
  return b};
+const saves=p=>{if(!G.aug||G.aug[p.c]!=24||rnd()>=.05)return false;p.hp=SX(p).hp;return true};
 const revive=p=>{if(p.t!='K'||!G.aug||G.aug[p.c]!=4||(G.rev&&G.rev[p.c]))return false;(G.rev=G.rev||{})[p.c]=1;p.hp=50;return true};
 async function boom(i0){const b=G.b,q=[i0];
  while(q.length){const i=q.shift(),cs=[];
   for(let dr=-1;dr<2;dr++)for(let dc=-1;dc<2;dc++){const r=(i>>3)+dr,c=(i&7)+dc;if(r>=0&&r<8&&c>=0&&c<8)cs.push(r*8+c)}
   log('대폭발!! 3×3 범위에 100 피해');flash(...cs);if(!G.fast)await sleep(800);
   for(const x of cs){const p=b[x];if(!p)continue;p.hp-=100;
-   if(p.hp<=0&&!revive(p)){log(nm(p)+' 폭발로 격파!');b[x]=null;if(p.t=='P'&&G.aug&&G.aug[p.c]==6)q.push(x)}}}}
+   if(p.hp<=0&&!revive(p)&&!saves(p)){log(nm(p)+' 폭발로 격파!');b[x]=null;if(p.t=='P'&&G.aug&&G.aug[p.c]==6)q.push(x)}}}}
 async function killed(a,f,d,t){const b=G.b,dc=d.c,ag=G.aug&&G.aug[a.c];log(nm(d)+' 격파!');
+ if(a.t=='P'&&ag==20)a.t=d.t;else if(a.t=='P'&&ag==27)a.ab=(a.ab||0)+SX(d).a;
  if(a.t=='B'&&ag==9){d.c=a.c;d.hp=30;log('뇌물! '+nm(d)+'(으)로 전환 (HP 30)');return}
  if(ag==7)b[t]=null;else{b[t]=a;b[f]=null;a.m=1}
  if(d.t=='P'&&G.aug&&G.aug[dc]==6)await boom(t)}
 async function killedC(d,a,f){const ac=a.c;log(nm(a)+' 격파!');
  if(d.t=='B'&&G.aug&&G.aug[d.c]==9){a.c=d.c;a.hp=30;log('뇌물! '+nm(a)+'(으)로 전환 (HP 30)');return}
  G.b[f]=null;if(a.t=='P'&&G.aug&&G.aug[ac]==6)await boom(f)}
-const pick3=()=>{const a=[1,2,3,4,5,6,7,8,9,10];for(let i=9;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a.slice(0,3)};
+const POOL=AUGS.map((A,i)=>A.ok===false?0:i+1).filter(Boolean);
+const pick6=()=>{const a=POOL.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a.slice(0,6)};
 function applyAug(gs){const b=G.b;
  b.forEach((p,i)=>{if(!p)return;const g=G.aug[p.c];
+  if(g==11&&p.t!='K'){p.t='N';p.hp=SX(p).hp}
+  if(g==13&&p.t!='K'){p.t='P';p.m=0;p.hp=SX(p).hp}
+  if(g==17&&p.t!='K'&&p.t!='Q'){b[i]=null;return}
   if(g==2&&p.t=='R')p.hp=SX(p).hp;
   if(g==8&&p.t=='P'){if(gs[p.c=='w'?0:1]<.5){p.t='Q';p.hp=SX(p).hp}else b[i]=null}});
  [['w',0],['b',1]].forEach(([c,k])=>{if(G.aug[c]==8)log('도박 ('+(c=='w'?'백':'흑')+'): '+(gs[k]<.5?'폰이 모두 퀸으로!':'폰이 모두 사라졌다…'))})}
 const who=()=>{const a=G.ag,s=a.f=='w'?'b':'w';return !a.p[a.f]?a.f:!a.p[s]?s:null};
 const mine=c=>G.on?c==G.me:(G.ai?c!=G.ac:true);
-const card=(n,cls,lab)=>{const A=AUGS[n-1];return `<div class='ac${cls}' data-n='${n}'>${lab?`<div class='gn'>${lab}</div>`:''}<div class='an'>${A.n}</div><svg viewBox='0 0 64 64' width='72' height='72'>${A.s}</svg><div class='at'>${A.t}</div></div>`};
+const ico=(A,z)=>A.s?`<svg viewBox='0 0 64 64' width='${z}' height='${z}'>${A.s}</svg>`:`<div class='em' style='font-size:${z*.6}px'>${A.e}</div>`;
+const card=(n,cls,lab)=>{const A=AUGS[n-1];return `<div class='ac${cls}' data-n='${n}'>${lab?`<div class='gn'>${lab}</div>`:''}<div class='an'>${A.n}</div>${ico(A,72)}<div class='at'>${A.t}</div></div>`};
 const myc=()=>G.on?G.me:(G.ai?(G.ac=='w'?'b':'w'):null),tag=c=>(c=='w'?'백':'흑')+(myc()?(c==myc()?' (나)':' (상대)'):'');
 function avShow(){if(!G.aug)return;$('#avl').innerHTML=['w','b'].map(c=>G.aug[c]?card(G.aug[c],' no',tag(c)+'의 증강'):'').join('');$('#av').hidden=false}
 function avClose(){$('#av').hidden=true;cpu()}
-function draftUI(){const a=G.ag,w=who(),av=a.o.filter(n=>n!=a.p.w&&n!=a.p.b),ok=w&&mine(w);$('#ag').hidden=false;
- $('#agt').textContent=ok?(w=='w'?'백':'흑')+(w==a.f?' (선공)':' (후공)')+' — 증강을 고르세요':(w?(w=='w'?'백':'흑')+'이(가) 고르는 중…':'');
- $('#ags').innerHTML=['w','b'].filter(c=>a.p[c]).map(c=>card(a.p[c],' no',tag(c)+'이 고른 증강')).join('');
- $('#agl').innerHTML=av.map(n=>card(n,ok?'':' no','')).join('')}
+const optsOf=c=>c=='w'?G.ag.o.slice(0,3):G.ag.o.slice(3);
+const canPick=c=>!G.ag.p[c]&&(G.on?c==G.me:G.ai?c!=G.ac:c==who());
+function draftUI(){const a=G.ag,w=who(),order=G.on?[G.me,G.me=='w'?'b':'w']:G.ai?[G.ac=='w'?'b':'w',G.ac]:[w||a.f,(w||a.f)=='w'?'b':'w'];$('#ag').hidden=false;
+ $('#agt').textContent=order.some(c=>canPick(c))?'증강을 고르세요 (내 후보 3개 중 1개)':'상대가 고르는 중…';$('#ags').innerHTML='';
+ $('#agl').innerHTML=order.map(c=>`<div class='gn'><b>${tag(c)}의 후보</b>${a.p[c]?' — 선택 완료':''}</div>`+optsOf(c).map(n=>card(n,canPick(c)?'':' no','')).join('')).join('')}
+function adShow(){$('#adl').innerHTML=AUGS.map((A,i)=>`<div class='gc'><div class='ge'>${ico(A,44)}</div><div><b>${i+1}. ${A.n}</b>${A.ok===false?' <small>(준비 중)</small>':''}<div class='gm'>${A.t}</div></div></div>`).join('');$('#ad').hidden=false}
 function draftStart(first,o,gs,ap){G.ag={o,gs:gs||[.5,.5],f:first,p:{w:(ap&&ap.w)||0,b:(ap&&ap.b)||0}};G.draft=1;G.busy=1;draftNext()}
 function draftNext(){const a=G.ag;
  if(a.p.w&&a.p.b){G.aug={w:a.p.w,b:a.p.b};applyAug(a.gs);G.draft=0;$('#ag').hidden=true;
   log('증강 — 백: '+AUGS[a.p.w-1].n+' · 흑: '+AUGS[a.p.b-1].n);G.busy=0;render();avShow();return}
  draftUI();const w=who();
- if(G.ai&&w==G.ac){const g=G;setTimeout(()=>{if(g!==G)return;const av=a.o.filter(n=>n!=a.p.w&&n!=a.p.b);pickAug(av[Math.random()*av.length|0],w)},900)}}
-async function pickAug(n,w){const a=G.ag;if(!G.draft||a.p[w]||!a.o.includes(n)||n==a.p.w||n==a.p.b)return;
- a.p[w]=n;if(G.on&&DB){try{await DB.doc(RP(G.code)).update({ap:a.p})}catch(e){}}
+ if(G.ai&&w==G.ac){const g=G;setTimeout(()=>{if(g!==G)return;const av=optsOf(w);pickAug(av[Math.random()*3|0],w)},900)}}
+async function pickAug(n,w){const a=G.ag;if(!G.draft||a.p[w]||!optsOf(w).includes(n))return;
+ a.p[w]=n;if(G.on&&DB){try{await DB.doc(RP(G.code)).update({['p'+w]:n})}catch(e){}}
  draftNext()}
 
 /* 일반 체스 */
@@ -417,7 +469,7 @@ async function mkRoom(){const db=await dbInit();if(!db)return;const pw=$('#lbc')
  if(pw.length<4)return lbMsg('비밀번호를 4자 이상으로 직접 만들어 입력하세요.');
  const code=hid(pw);
  try{const sn=await db.doc(RP(code)).get();if(sn.exists){const o=sn.data();if(o.host!=UID&&!o.over)return lbMsg('이미 쓰고 있는 비밀번호예요. 다른 비밀번호로 만들어 주세요.')}
-  await db.doc(RP(code)).set({host:UID,guest:'',hc:cfg.me,nm:!!cfg.nm,ao:cfg.aug&&!cfg.nm?pick3():[],ap:{w:0,b:0},gs:[Math.random(),Math.random()],first:cfg.nm?'w':Math.random()<.5?'w':'b',ml:[],over:''})}
+  await db.doc(RP(code)).set({host:UID,guest:'',hc:cfg.me,nm:!!cfg.nm,ao:cfg.aug&&!cfg.nm?pick6():[],pw:0,pb:0,gs:[Math.random(),Math.random()],first:cfg.nm?'w':Math.random()<.5?'w':'b',ml:[],over:''})}
  catch(e){return lbMsg('방을 만들 수 없어요 ('+(e.code||'오류')+') — 서버 연결을 확인해 주세요.')}
  lbMsg('방을 만들었어요. 상대가 같은 비밀번호로 입장하면 시작돼요.');enter(code,cfg.me,cfg.nm)}
 async function joinRoom(){const db=await dbInit();if(!db)return;const pw=$('#lbc').value.trim(),code=hid(pw);
@@ -431,8 +483,8 @@ async function sync(d){const g=G;if(!d||!g||!g.on)return;if(syncing){pend=d;retu
  try{
   if(g.wait){if(!d.guest)return;g.wait=0;g.coin=1;render();
    if(!d.ml.length&&!g.nm){await coin(d.first);if(g!==G)return}
-   const dr=!g.nm&&d.ao&&d.ao.length;Object.assign(g,{coin:0,t:d.first,tt:g.nm?99999:120,busy:dr?1:0});$('#lb').hidden=true;log((g.nm?'일반 체스 · ':'동전 결과: ')+(d.first=='w'?'백':'흑')+' 선공 · 나는 '+(g.me=='w'?'백':'흑'));render();if(dr)draftStart(d.first,d.ao,d.gs,d.ap)}
-  if(g.draft&&d.ap&&(d.ap.w!=g.ag.p.w||d.ap.b!=g.ag.p.b)){g.ag.p={w:d.ap.w,b:d.ap.b};draftNext()}
+   const dr=!g.nm&&d.ao&&d.ao.length;Object.assign(g,{coin:0,t:d.first,tt:g.nm?99999:120,busy:dr?1:0});$('#lb').hidden=true;log((g.nm?'일반 체스 · ':'동전 결과: ')+(d.first=='w'?'백':'흑')+' 선공 · 나는 '+(g.me=='w'?'백':'흑'));render();if(dr)draftStart(d.first,d.ao,d.gs,{w:d.pw,b:d.pb})}
+  const oc=g.me=='w'?'b':'w';if(g.draft&&(d['p'+oc]||0)!=g.ag.p[oc]){g.ag.p[oc]=d['p'+oc]||0;draftNext()}
   while(g===G&&!g.draft&&g.applied<d.ml.length){const m=JSON.parse(d.ml[g.applied]);g.fast=d.ml.length-g.applied>1;g.ml.push(d.ml[g.applied]);g.applied++;g.rq=m.rn.slice();g.fpr=m.pr||null;await act(m.f,m.t);g.rq=null;g.fpr=null}
   g.fast=0;
   if(g===G&&d.over&&!g.over){const o=JSON.parse(d.over);fin(o.w||0,o.msg)}
@@ -445,7 +497,7 @@ function overPush(){if(G.on&&DB&&G.code)DB.doc(RP(G.code)).update({over:JSON.str
 
 $('#menu').onclick=e=>{const m=e.target.dataset.m;if(m!==undefined){cfg.lv=m;menu()}};
 $('#cl').onclick=e=>{const c=e.target.dataset.c;if(c){cfg.me=c;menu()}};
-$('#go').onclick=go;$('#nmb').onclick=()=>{cfg.nm=!cfg.nm;menu()};$('#agb').onclick=()=>{cfg.aug=!cfg.aug;menu()};$('#ac2').onclick=e=>{if(e.target.dataset.av)avShow()};$('#av').onclick=e=>{if(e.target.id=='av'||e.target.id=='avx')avClose()};$('#agl').onclick=e=>{const c=e.target.closest('.ac');if(!c||!G.draft)return;const w=who();if(w&&mine(w))pickAug(+c.dataset.n,w)};$('#lx').onclick=()=>{$('#lb').hidden=true};$('#lmk').onclick=mkRoom;$('#ljn').onclick=joinRoom;$('#gd').onclick=()=>{guide();$('#gm').hidden=false};$('#gx').onclick=()=>{$('#gm').hidden=true};$('#gm').onclick=e=>{if(e.target.id=='gm')e.target.hidden=true};$('#again').onclick=go;$('#see').onclick=()=>{$('#rs').hidden=true};
+$('#go').onclick=go;$('#nmb').onclick=()=>{cfg.nm=!cfg.nm;menu()};$('#agb').onclick=()=>{cfg.aug=!cfg.aug;menu()};$('#ac2').onclick=e=>{if(e.target.dataset.av)avShow()};$('#agd').onclick=adShow;$('#adx').onclick=()=>{$('#ad').hidden=true};$('#av').onclick=e=>{if(e.target.id=='av'||e.target.id=='avx')avClose()};$('#agl').onclick=e=>{const c=e.target.closest('.ac');if(!c||!G.draft)return;const n=+c.dataset.n,col=['w','b'].find(x=>optsOf(x).includes(n));if(col&&canPick(col))pickAug(n,col)};$('#lx').onclick=()=>{$('#lb').hidden=true};$('#lmk').onclick=mkRoom;$('#ljn').onclick=joinRoom;$('#gd').onclick=()=>{guide();$('#gm').hidden=false};$('#gx').onclick=()=>{$('#gm').hidden=true};$('#gm').onclick=e=>{if(e.target.id=='gm')e.target.hidden=true};$('#again').onclick=go;$('#see').onclick=()=>{$('#rs').hidden=true};
 $("#pm").onclick=e=>{const t=e.target.dataset.t;if(t&&G.pr)G.pr(t)};
 $("#bd").onclick=e=>{const el=e.target.closest(".c");
  if(!el||G.busy||G.over||(G.ai&&G.t==G.ac)||(G.on&&G.t!=G.me))return;
